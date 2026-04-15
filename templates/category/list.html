@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h3>Categories</h3>
+    <a href="{% url 'category_create' %}" class="btn btn-primary">Add Category</a>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+    {% for cat in categories %}
+    <tr>
+        <td>{{ cat.id }}</td>
+        <td>{{ cat.title }}</td>
+        <td>
+            <a href="{% url 'category_update' cat.id %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'category_delete' cat.id %}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
